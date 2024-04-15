@@ -1,0 +1,42 @@
+from itertools import product
+
+def table_de_verite(fonction_logique):
+    # Création de la table de vérité
+    variables = sorted(set(fonction_logique))
+    table = []
+    for combinaison in product([0, 1], repeat=len(variables)):
+        valeur = eval(fonction_logique, dict(zip(variables, combinaison)))
+        table.append((*combinaison, valeur))
+
+    # Affichage de la table de vérité
+    print("Table de vérité :")
+    print("{:<15}{}".format(' | '.join(variables), 'Résultat'))
+    print('-' * (len(' | '.join(variables)) + 13))
+    for ligne in table:
+        print("{:<15}{}".format(' | '.join(map(str, ligne[:-1])), ligne[-1]))
+
+    # Calcul de la première forme canonique
+    premiere_forme_canonique = []
+    for ligne in table:
+        if ligne[-1]:
+            terme = " & ".join([f"{variable}" if valeur else f"~{variable}" for variable, valeur in zip(variables, ligne[:-1])])
+            premiere_forme_canonique.append(terme)
+
+    # Affichage de la première forme canonique
+    print("\nPremière forme canonique :")
+    print(" + ".join(premiere_forme_canonique))
+
+    # Calcul de la deuxième forme canonique
+    deuxieme_forme_canonique = []
+    for ligne in table:
+        if not ligne[-1]:
+            terme = " | ".join([f"{variable}" if valeur else f"~{variable}" for variable, valeur in zip(variables, ligne[:-1])])
+            deuxieme_forme_canonique.append(terme)
+
+    # Affichage de la deuxième forme canonique
+    print("\nDeuxième forme canonique :")
+    print(" & ".join(deuxieme_forme_canonique))
+
+# Exemple d'utilisation
+fonction_logique = input("Entrez votre fonction logique à trois variables en utilisant les opérateurs logiques (&, |, ~) et les variables (par exemple: 'A & ~B | C'): ")
+table_de_verite(fonction_logique)
