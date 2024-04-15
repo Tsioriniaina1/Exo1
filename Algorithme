@@ -1,0 +1,18 @@
+Algorithme : table_de_verite
+
+1. Entrer la fonction logique depuis l'input de l'utilisateur.
+2. Créer un ensemble des variables présentes dans la fonction logique.
+3. Générer toutes les combinaisons possibles de valeurs pour ces variables (0 ou 1).
+4. Pour chaque combinaison de valeurs :
+     a. Évaluer la fonction logique avec ces valeurs et enregistrer le résultat dans une table de vérité.
+5. Afficher la table de vérité.
+6. Calculer la première forme canonique :
+     a. Pour chaque ligne de la table de vérité où le résultat est vrai :
+         i. Créer un terme correspondant à cette ligne en utilisant les variables et les négations nécessaires.
+         ii. Ajouter ce terme à la liste des termes de la première forme canonique.
+7. Afficher la première forme canonique.
+8. Calculer la deuxième forme canonique :
+     a. Pour chaque ligne de la table de vérité où le résultat est faux :
+         i. Créer un terme correspondant à cette ligne en utilisant les variables et les négations nécessaires.
+         ii. Ajouter ce terme à la liste des termes de la deuxième forme canonique.
+9. Afficher la deuxième forme canonique.
